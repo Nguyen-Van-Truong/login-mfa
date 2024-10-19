@@ -1,0 +1,35 @@
+<!-- login-app\public\register.html -->
+<!DOCTYPE html>
+<html lang="en" ng-app="loginApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+   
+    <script src="app.js"></script>
+    
+    <script src="/login-app/services/AuthService.js"></script>
+    <script src="/login-app/controllers/RegisterController.js"></script>
+    
+    <link rel="stylesheet" href="styles.css"></head>
+<body ng-controller="RegisterController">
+
+    <div class="container">
+        <h1>Register</h1>
+
+        <form ng-submit="register()">
+            <input type="text" placeholder="Name" required ng-model="registerData.name" />
+            <input type="email" placeholder="Email" required ng-model="registerData.email" />
+            <input type="password" placeholder="Password" required ng-model="registerData.password" />
+            <button type="submit">Register</button>
+        </form>
+
+        <p class="message" ng-if="message">{{ message }}</p>
+
+        <p>Đã có tài khoản? <a href="index.html">Đăng nhập tại đây</a></p>
+    </div>
+
+</body>
+</html>

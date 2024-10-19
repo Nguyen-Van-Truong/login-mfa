@@ -1,0 +1,47 @@
+<!-- login-app\public\index.html -->
+<!DOCTYPE html>
+<html lang="en" ng-app="loginApp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/3.0.1/js.cookies.min.js"></script>
+    <script src="app.js"></script>
+    
+    <script src="/login-app/services/AuthService.js"></script>
+    <script src="/login-app/interceptors/AuthInterceptor.js"></script>
+    <script src="/login-app/controllers/LoginController.js"></script>
+    <script src="/login-app/controllers/ProfileController.js"></script>
+    <script src="/login-app/controllers/RegisterController.js"></script>
+    
+    <link rel="stylesheet" href="styles.css">
+
+    </head>
+<body ng-controller="LoginController">
+
+    <div class="container">
+        <!-- Form đăng nhập -->
+        <form ng-submit="login()" ng-if="!mfaStep && !isAuthenticated">
+            <h1>Login</h1>
+            <input type="text" placeholder="Username" required ng-model="loginData.username" />
+            <input type="password" placeholder="Password" required ng-model="loginData.password" />
+            <button type="submit">Login</button>
+        </form>
+
+        <!-- Form nhập mã MFA -->
+        <div ng-if="mfaStep">
+            <h2>Multi-Factor Authentication</h2>
+            <p>Enter the code from your MFA app:</p>
+            <input type="text" placeholder="MFA Code" ng-blur="setMfaCode($event)" required />
+            <button ng-click="verifyMFA()">Verify</button>
+        </div>
+
+        <p class="message">{{ message }}</p>
+
+        <p>Chưa có tài khoản? <a href="register.html">Đăng ký tại đây</a></p>
+    </div>
+
+</body>
+</html>

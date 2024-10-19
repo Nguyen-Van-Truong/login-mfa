@@ -1,0 +1,36 @@
+<!-- login-app\public\login_success.html -->
+<!DOCTYPE html>
+<html lang="en" ng-app="loginApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Success</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js"></script>
+
+    <script src="/login-app/services/AuthService.js"></script>
+    <script src="/login-app/interceptors/AuthInterceptor.js"></script>
+    <script src="/login-app/controllers/LoginController.js"></script>
+    <script src="/login-app/controllers/ProfileController.js"></script>
+    <script src="/login-app/controllers/RegisterController.js"></script>
+    </head>
+
+<body ng-controller="ProfileController">
+
+    <div class="container">
+        <h1>Welcome</h1>
+        <div class="profile-info">
+            <p><strong>Tên:</strong> {{ userInfo.name }}</p>
+            <p><strong>Email:</strong> {{ userInfo.email }}</p>
+        </div>
+
+        <button ng-click="getProfile()">Tải lại thông tin người dùng</button>
+        <button ng-click="logout()">Đăng xuất</button>
+    </div>
+
+</body>
+
+</html>
